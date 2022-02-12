@@ -1,42 +1,19 @@
-type Link {
-  id: ID!
-  title: String!
-  address: String!
-  user: User!
-}
-
-type User {
-  id: ID!
+type Users{
+  id: String!
   name: String!
+  email: String!
 }
 
-type Query {
-  links: [Link!]!
+type Query{
+  user(id: String!): Users!
+  users: [Users!]!
 }
 
-input NewLink {
-  title: String!
-  address: String!
+input newUsers{
+  name: String!
+  email: String!
 }
 
-input RefreshTokenInput{
-  token: String!
-}
-
-input NewUser {
-  username: String!
-  password: String!
-}
-
-input Login {
-  username: String!
-  password: String!
-}
-
-type Mutation {
-  createLink(input: NewLink!): Link!
-  createUser(input: NewUser!): String!
-  login(input: Login!): String!
-  # we'll talk about this in authentication section
-  refreshToken(input: RefreshTokenInput!): String!
+type Mutation{
+  createUsers(input: newUsers): Users!
 }

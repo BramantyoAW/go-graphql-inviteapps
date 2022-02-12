@@ -9,14 +9,22 @@ import (
 
 	"github.com/BramantyoAW/go-graphql-inviteapps/graph/generated"
 	"github.com/BramantyoAW/go-graphql-inviteapps/graph/model"
+	"github.com/BramantyoAW/go-graphql-inviteapps/database"
 )
 
-func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {
+var db := database.InitDB();
+
+func (r *mutationResolver) CreateUsers(ctx context.Context, input *model.NewUsers) (*model.Users, error) {
 	panic(fmt.Errorf("not implemented"))
 }
 
-func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
-	panic(fmt.Errorf("not implemented"))
+func (r *queryResolver) User(ctx context.Context, id string) (*model.Users, error) {
+	// return db.selectUsersById(id), nil
+	anic(fmt.Errorf("not implemented"))
+}
+
+func (r *queryResolver) Users(ctx context.Context) ([]*model.Users, error) {
+	return db.getUsers(), nil
 }
 
 // Mutation returns generated.MutationResolver implementation.
